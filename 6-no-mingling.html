@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Mingling</title>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button>Count!</button>
+  </body>
+
+  <script>
+    //had to move the entire script tag at the end of the body for the html elements to fully load first otherwise there was an error coming up
+    let counter = 0;
+
+    function increaseCount() {
+      alert("hee");
+      const heading = document.querySelector("h1");
+
+      counter++;
+      heading.innerHTML = counter;
+
+      if (counter % 10 === 0) {
+        alert(`the count is now: ${counter}`);
+      }
+    }
+    document.querySelector("button").onclick = increaseCount; //here we are simply passing the function by reference as we don't want to assign the ruturned value of the function to our 'button'.onlick but the entire function. Had we done = increaseCount() we would've assigned it to the returned value of the function and our function would simply run automatically only once on the initial load uncontrollably
+  </script>
+</html>

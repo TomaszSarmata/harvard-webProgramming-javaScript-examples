@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improved Counter</title>
+    <script>
+      let counter = 0;
+
+      function increaseCount() {
+        const heading = document.querySelector("h1");
+
+        counter++;
+        heading.innerHTML = counter;
+
+        //just to demonstrate template literals and more advanced code (multiple of 10 so every 10 count we will get a message)
+        if (counter % 10 === 0) {
+          alert(`the count is now: ${counter}`);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button onclick="increaseCount()">Count!</button>
+  </body>
+</html>
