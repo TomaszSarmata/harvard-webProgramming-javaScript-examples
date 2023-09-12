@@ -21,7 +21,9 @@
       }
       //below first argument is always an event listener, the second argument is always a function we want to run when the event fires
       document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector("button").onclick = increaseCount; //so here is what we want to run when the event fires
+        document
+          .querySelector("button")
+          .addEventListener("click", increaseCount); //so here is what we want to run when the event fires
       });
     </script>
   </head>
