@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Event Listener</title>
+    <script>
+      //if the code left in the head we have to set up an event listener on the entire document with the first argument being DOMContentLoaded. That will make sure that the DOM fully loads before the script is executed
+
+      let counter = 0;
+
+      function increaseCount() {
+        const heading = document.querySelector("h1");
+
+        counter++;
+        heading.innerHTML = counter;
+
+        if (counter % 10 === 0) {
+          alert(`the count is now: ${counter}`);
+        }
+      }
+      //below first argument is always an event listener, the second argument is always a function we want to run when the event fires
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("button").onclick = increaseCount; //so here is what we want to run when the event fires
+      });
+    </script>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button>Count!</button>
+  </body>
+</html>
