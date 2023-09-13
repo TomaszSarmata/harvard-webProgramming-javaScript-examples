@@ -7,9 +7,10 @@
     <script>
       //here we are trying to DRY our code by using data property of the html element. Then we can reference that information / data in our JS through element.dataset object which will hold the information saved in data.color object
       document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("button").forEach(function (button) {
-          button.onclick = function () {
-            document.querySelector("#hello").style.color = button.dataset.color;
+        document.querySelectorAll("button").forEach(function (couldBeAnyName) {
+          couldBeAnyName.onclick = function () {
+            document.querySelector("#hello").style.color =
+              couldBeAnyName.dataset.color;
           };
         });
       });
