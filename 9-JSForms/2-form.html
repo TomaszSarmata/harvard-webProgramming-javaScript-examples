@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
+      // this is how you pull the content of the users input from the form (.value)
       document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("form").onsubmit = function () {
-          alert("you've got it"); //we can use anonymous function here or first create a named function above and pass it to onsubmit as a variable
+          const name = document.querySelector("#name").value;
+          alert(`Thank you for your submission ${name}`);
         };
       });
     </script>
