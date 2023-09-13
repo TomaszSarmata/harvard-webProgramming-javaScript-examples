@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colors</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .green {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="hello">Hello!</h1>
+    <button id="red" onclick="red()">Red</button>
+    <button id="blue" onclick="blue()">Blue</button>
+    <button id="green" onclick="green()">Green</button>
+  </body>
+  <script>
+    const heading = document.querySelector("h1");
+    function red() {
+      heading.className = "";
+      heading.classList.add("red");
+    }
+    function blue() {
+      heading.className = "";
+      heading.classList.add("blue");
+    }
+    function green() {
+      heading.className = "";
+      heading.classList.add("green");
+    }
+  </script>
+</html>
