@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("form").onsubmit = function () {
+          alert("you've got it"); //we can use anonymous function here or first create a named function above and pass it to onsubmit as a variable
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Hello!</h1>
+    <form action="">
+      <input type="text" autofocus id="name" placeholder="Name" />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
