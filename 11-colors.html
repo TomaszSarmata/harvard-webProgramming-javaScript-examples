@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colors2</title>
+    <script>
+      //here is another way of achieving the same results. Here we are using just pure JS wihtout CSS classes. No need to take off all classes from the element as the color is just temporary until we click the next color button
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("#red").addEventListener("click", function () {
+          document.querySelector("#hello").style.color = "red";
+        });
+        document.querySelector("#blue").addEventListener("click", function () {
+          document.querySelector("#hello").style.color = "blue";
+        });
+        document.querySelector("#green").addEventListener("click", function () {
+          document.querySelector("#hello").style.color = "green";
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="hello">Hello!</h1>
+    <button id="red">Red</button>
+    <button id="blue">Blue</button>
+    <button id="green">Green</button>
+  </body>
+</html>
