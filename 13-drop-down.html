@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colors2</title>
+    <script>
+      //here I have managed to make it work with the select dropdown for the same colors by applying querySelectorAll to 'select' by mistake. Discovered it also works but the proper way of doing that will be through just querySelector('select') and then using this.value to get to the value of the element. 'this' keyword in JS always refers to the element that is receiving an event.
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("select").forEach(function (couldBeAnyName) {
+          couldBeAnyName.onchange = function () {
+            document.querySelector("#hello").style.color = couldBeAnyName.value;
+          };
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="hello">Hello!</h1>
+    <select>
+      <option>-</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+    </select>
+  </body>
+</html>
