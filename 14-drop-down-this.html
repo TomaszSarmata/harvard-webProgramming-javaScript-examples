@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Colors2</title>
     <script>
-      // implemented the same kind of solution but instead of using querySelectorAll used normal single querySelector. To distinguish between different options decided to use this. key word which points to the element where the event (change) took place (as we are using this word in the context of the event handler)
+      // implemented the same kind of solution but instead of using querySelectorAll used normal single querySelector. To distinguish between different options decided to use this. key word which points to the element where the event (change) took place (which in this case is the select element) (as we are using this word in the context of the event handler)
       document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("select").onchange = function () {
           document.querySelector("#hello").style.color = this.value;
