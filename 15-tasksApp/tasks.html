@@ -14,14 +14,15 @@
     </form>
   </body>
   <script>
+    // here is my solution to the task. Next file in this folder will follow steps from the harvard course
     document.addEventListener("DOMContentLoaded", function () {
-      document.querySelector("form").onsubmit = () => {
+      document.querySelector("form").onsubmit = (e) => {
         let userInput = document.querySelector("#task").value;
         let textnode = document.createTextNode(userInput);
         let node = document.createElement("li");
         node.appendChild(textnode);
         document.querySelector("#tasks").appendChild(node);
-        return false; //instead of e.preventDefault we can simply return false
+        e.preventDefault();
       };
     });
   </script>
