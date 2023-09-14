@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Interval</title>
+    <script>
+      let counter = 0;
+      const count = () => {
+        const heading = document.querySelector("h1");
+        counter++;
+        heading.innerHTML = counter;
+      };
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("button").onclick = count;
+        //that is going to execute the function automatically every second but if we close the page and reopen it the count will reset to 0. We would have to use local storage to be able to persist the counter across various loads of the page
+        setInterval(count, 1000);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button>Count!</button>
+  </body>
+</html>
