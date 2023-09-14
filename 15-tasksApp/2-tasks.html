@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks</title>
+    <script>
+      // here is the code taken from the harvard course. It shows how to prevent default submission by returning false. Also how to clear the input field after submission and how to manipulate the disabled argument in the input element to prevent the user from adding empty values
+      document.addEventListener("DOMContentLoaded", function () {
+        //setting the disabled argument to true to prevent adding empty value
+        document.querySelector("#submit").disabled = true;
+
+        //if the user starts typing in we are setting the disabled argument to false
+        document.querySelector("#task").onkeyup = () => {
+          //extra line below to make sure that the user won't erase the word and just add empty value (preventing a bug)
+          if (document.querySelector("#task").value.length > 0) {
+            document.querySelector("#submit").disabled = false;
+            // if the value of what a user typed in is greater than 0 then give them access to the submit button. Otherwise, don't
+          } else {
+            document.querySelector("#submit").disabled = true;
+          }
+        };
+
+        document.querySelector("form").onsubmit = () => {
+          let li = document.createElement("li");
+
+          let userInput = document.querySelector("#task").value;
+
+          li.innerHTML = userInput;
+          document.querySelector("#tasks").append(li);
+
+          //resets the value of the input field
+          document.querySelector("#task").value = "";
+          //after submiting the form we are resetting the disabled argument to true again to prevent adding empty value
+          document.querySelector("#submit").disabled = true;
+          // stop form from default submitting
+          return false;
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Tasks</h1>
+    <ul id="tasks"></ul>
+    <form action="">
+      <input type="text" placeholder="New Task" id="task" autofocus />
+      <input id="submit" type="submit" disabled />
+    </form>
+  </body>
+</html>
