@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Exchange</title>
+    <script>
+      // This file demonstrates how to make a simple API call through fetch in an async function and display a part of data in the body of the page. The api in the course didn't work for free anymore so I used a different platform with similar results. Next file will demonstrate the same solution but using fetch().then syntax
+      document.addEventListener("DOMContentLoaded", async function () {
+        const response = await fetch(
+          "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_qk85pxC1KtYBE13zRK9r308SBtJDrW2Bt8tdxKgs"
+        );
+        let data = await response.json();
+        data = data.data;
+        console.log(data);
+        const rate = data.EUR;
+
+        document.querySelector(
+          "h1"
+        ).innerHTML = `1 USD is equal to ${rate.toFixed(3)} Euro`;
+      });
+    </script>
+  </head>
+  <body>
+    <h1>data</h1>
+    <ul></ul>
+  </body>
+</html>
