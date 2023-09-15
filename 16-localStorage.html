@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Interval</title>
+    <script>
+      //here we are going to set local storage to persist the counter value across various page loads / refreshes. So insted of just declaring our variable counter we are going to first check if it already exists in the local storage, and if not we are going to set it in our local storage. Then we are going to pull the value out of the local storage in our function, save it in a new variable (also called counter), then we gonna update new variable (counter++) and finally we are going to set item in a local storage with the updated value (localStorage.setItem('counter', counter)). At the very end we are going to instruct our program to update the inner html of our h1 element to the local storage value.
+      if (!localStorage.getItem("counter")) {
+        localStorage.setItem("counter", 0);
+      }
+
+      const count = () => {
+        let counter = localStorage.getItem("counter");
+        counter++;
+        const heading = document.querySelector("h1");
+        heading.innerHTML = counter;
+        localStorage.setItem("counter", counter);
+      };
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("h1").innerHTML =
+          localStorage.getItem("counter");
+        document.querySelector("button").onclick = count;
+      });
+    </script>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button>Count!</button>
+  </body>
+</html>
