@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Exchange</title>
+    <script>
+      // This file demonstrates how to make a simple API call on the user submission with a few sanity check points to make sure the user types in the correct value and if not the message displays to instruct the user. Also catch() statement added to the final .then() statement to make sure things crash in a controllable manner
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("form").onsubmit = function () {
+          fetch(
+            "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_qk85pxC1KtYBE13zRK9r308SBtJDrW2Bt8tdxKgs"
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              //here we are going to make the page more interactive and allow a user type in the currency and pass the value from the input filed to get the right data
+              const currency = document
+                .querySelector("#currency")
+                .value.toUpperCase();
+
+              const rate = data.data[currency]; //can't do data.data.currency as the program would then try to access a property of rates that is called 'currency' and not USD or EUR so to inject a variable into the key-object .notation we use []
+
+              //here we are checking if the input is correct. If it is then we go ahead and display the results but if it's not  then we are going to alert the user and ask them to type in the correct value in the currency field
+              if (rate !== undefined) {
+                document.querySelector(
+                  "#results"
+                ).innerHTML = `1 USD is equal to ${rate.toFixed(
+                  3
+                )} ${currency}`;
+              } else {
+                alert("Please type in the valid currency");
+                document.querySelector("#results").innerHTML =
+                  "Invalid currency";
+              }
+            })
+            //just to make sure that when things crash they crash in a predictable way and the user gets notified
+            .catch((error) => {
+              console.log("Error", error);
+            });
+          return false; //to prevent default submission
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" id="currency" placeholder="Currency" />
+      <input type="submit" value="Convert" />
+    </form>
+
+    <div id="results"></div>
+  </body>
+</html>
