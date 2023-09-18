@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate</title>
+    <style>
+      /* here we are going to define what this animation is actually going to do by using the @keyframes */
+      @keyframes grow {
+        from {
+          font-size: 20px;
+        }
+        to {
+          font-size: 100px;
+        }
+      }
+
+      /* here below we are defining our annimation by giving it the name the duration the fill-mode (directin) and that will apply to all of our heading on the page */
+      h1 {
+        animation-name: grow;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+  </body>
+</html>
