@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate</title>
+    <style>
+      /* we can also divide our animation into many steps expressed in ie % and on each milestone we can add extra css properties */
+
+      @keyframes move {
+        0% {
+          left: 0%;
+        }
+        50% {
+          left: 50%;
+        }
+        100% {
+          left: 0%;
+        }
+      }
+
+      h1 {
+        animation-name: move;
+        position: relative;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 2;
+        /* line above will repeat the animation twice. It could also be infinite */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+  </body>
+</html>
