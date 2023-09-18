@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate</title>
+    <style>
+      @keyframes move {
+        0% {
+          left: 0%;
+        }
+        50% {
+          left: 50%;
+        }
+        100% {
+          left: 0%;
+        }
+      }
+
+      h1 {
+        animation-name: move;
+        position: relative;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+      }
+    </style>
+    <script>
+      // here we are going to include JS to control the animation for us. The control button will allow a user to change the animation
+      document.addEventListener("DOMContentLoaded", function () {
+        const h1 = document.querySelector("h1");
+        // the line below will by default pause the animation
+        h1.style.animationPlayState = "paused";
+
+        document.querySelector("button").onclick = () => {
+          if (h1.style.animationPlayState === "paused") {
+            h1.style.animationPlayState = "running";
+          } else {
+            h1.style.animationPlayState = "paused";
+          }
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <button>Click here</button>
+    <h1>Welcome!</h1>
+  </body>
+</html>
