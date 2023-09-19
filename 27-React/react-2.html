@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      // here are the basics of react. you can simply inject your JS directly into html without grabbing elements through document.queryselector and seperating html and js. It's quicker and more convenient to read
+      const x = 1;
+      const y = 2;
+      function App() {
+        return <div>{x + y}</div>;
+      }
+
+      ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
