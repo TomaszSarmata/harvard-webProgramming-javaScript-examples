@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      //here we are going to create a simple component that will desplay the heading 3 times. Whenever we have to reapeat UI many times we typically encapsulate that into a seperate component and then just use the component many times throughout the page.
+
+      function Hello() {
+        return (
+          <div>
+            <h1>Hello</h1>
+            <h1>Hello</h1>
+            <h1>Hello</h1>
+          </div>
+        );
+      }
+      function App() {
+        return (
+          <div>
+            <Hello />
+            <Hello />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
