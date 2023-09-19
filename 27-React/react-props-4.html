@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      //the real power of components lies in them being able to pass properties (likewise html elements being able to have their own attributes) down to their child components. So we can strart to parameterise those components with different kind of information / details (props) each time we use them. Example below
+
+      function Hello(props) {
+        return (
+          <div>
+            <h1>Hello, {props.name}</h1>
+          </div>
+        );
+      }
+      function App() {
+        return (
+          <div>
+            // so here our Hello component is accepting this property called
+            name, which is different for all three components. Now we want our
+            Hello function to take advantage of these properties so we have to
+            add an argument to the Hello function. As a nonvention this argument
+            is always called prop
+            <Hello name="Harry" />
+            <Hello name="John" />
+            <Hello name="Sara" />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
