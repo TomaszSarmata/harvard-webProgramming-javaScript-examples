@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React Counter</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      // here we are going to start creating states in our components. State is any kind of data we want to store in our component. To demonstrate that we are going to recreate a counter and encapsulate it in a component
+
+      function Counter() {
+        const [counter, setCounter] = React.useState(0);
+
+        const handleCount = () => {
+          let newValue = counter;
+          newValue++;
+          setCounter(newValue);
+        };
+
+        return (
+          <div>
+            <h1>{counter}</h1>
+            <button onClick={handleCount}>Count</button>
+          </div>
+        );
+      }
+      function App() {
+        return (
+          <div>
+            <Counter />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
