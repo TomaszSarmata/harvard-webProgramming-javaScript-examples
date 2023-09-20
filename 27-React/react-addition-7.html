@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      #app {
+        text-align: center;
+        font-family: sans-serif;
+      }
+      #problem {
+        font-size: 30px;
+      }
+      .incorrect {
+        color: red;
+      }
+      .hide {
+        display: none;
+      }
+      #winner {
+        font-size: 72px;
+        color: green;
+      }
+    </style>
+    <title>Counter</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      // here we are going to create a simple app that will ask a user to provide a solution to a simple mathematical equation. We are going to combine the useState variables into one JS object to keep the code clean
+      function App() {
+        // over here we are going to combine all useState variables into just one JS object to keep it nice and clean
+
+        //so that we are going to comment out
+        // const [num1, setNum1] = React.useState(1);
+        // const [num2, setNum2] = React.useState(2);
+
+        const [state, setState] = React.useState({
+          num1: 1,
+          num2: 2,
+          // we also want to keep track of the user input so we are going to declare a variable response and connect that with the value argument of our input element value={state.response}
+          response: "",
+          //the score will help us to let the user know if they got it right or wrong
+          score: 0,
+          //that value below will serve as the className for our div that will style the color of the font. If the user gets the answe incorrect we are going to flip the value to true. Then we are going to do on the html element className={state.incorrect ? "incorrect" : ""}
+          incorrect: false,
+          //the value below will hide by default the exclamation mark but if the user gets it wrong we are going to display the exclamation mark
+          hide: true,
+        });
+
+        //here we want to run a function that will check if the user pressed enter and if so the program will take the value of the user input and check if  the answer is right
+        const inputKeyPress = (e) => {
+          if (e.key === "Enter") {
+            //below we are going to check again to see if the user got the answer right. Important to convert state.response (which is string as it comes from the DOM) to a number
+            let answer = parseInt(state.response);
+            if (state.num1 + state.num2 === answer) {
+              alert("you got it right");
+              setState({
+                ...state,
+                //add one point if they got it right
+                score: state.score + 1,
+
+                //that will change the numbers and select randomly new values for both to make the game more interesting
+                num1: Math.ceil(Math.random() * 10),
+                num2: Math.ceil(Math.random() * 10),
+                //clear the input filed
+                response: "",
+                incorrect: false,
+                hide: true,
+              });
+            } else {
+              alert("wrong answer");
+
+              setState({
+                ...state,
+                incorrect: true,
+                // deduct one point if they got it wrong
+                score: state.score - 1,
+                //clear the input field
+                response: "",
+                //we are going to leave the same values for each number in case the user gets it wrong
+                hide: false,
+              });
+            }
+          }
+        };
+
+        const updateResponse = (e) => {
+          setState({
+            // num1: state.num1,
+            // num2: state.num2 that is too verbose hence spread operator
+            ...state,
+            //use the existing values of the state for everything else apart from the below value for the response
+            response: event.target.value,
+          });
+        };
+
+        //here we want to give a user the chance of actually winning the game. So as we are inside the JS function we can simply add some extra logic straight in here. If the condition is met we are going to render a completely different div for the user so that the div with the return statement further below showing the game is not going to get rendered
+        if (state.score === 10) {
+          return <div id="winner">You won!</div>;
+        }
+
+        return (
+          <div>
+            <div id="problem" className={state.incorrect ? "incorrect" : ""}>
+              How much is {state.num1} + {state.num2}
+              <span className={state.hide ? "hide" : ""}>!</span>
+            </div>
+
+            <input
+              autoFocus={true}
+              type="text"
+              placeholder="type in your answer"
+              value={state.response}
+              onChange={updateResponse}
+              onKeyPress={inputKeyPress}
+            />
+            <div>Your score: {state.score}</div>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
